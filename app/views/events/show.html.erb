@@ -1,0 +1,21 @@
+<div class="event">
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <h1 class="text-center mb-4"><%= @event.title %></h1>
+      <p class="event-photo"><img src="<%= asset_path('logo.png') %>" width="400" height="225"></p>
+      <h3 class="mb-3">
+        <small>Где все проходит: <%= link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}" %></small>
+      </h3>
+      <h3 class="mb-2"><small>Немного о мероприятии:</small></h3>
+      <p class="mb-3"><%= @event.description %></p>
+      <h3><small><%= l(@event.datetime, format: :short) %></small></h3>
+    </div>
+
+    <div>
+      <% if current_user_can_edit?(@event) %>
+        <%= link_to "Редактировать мероприятие", edit_event_path(@event) %> |
+      <% end %>
+      <%= link_to "Все мероприятия", events_path %>
+    </div>
+  </div>
+</div>

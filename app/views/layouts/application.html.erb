@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "BBQ" %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+  <body class="bg-light">
+    <div class="navbar-brand text-center navbar-static-top bg-light">
+      <div class="container">
+        <p class="h-1"><%= link_to "BBQ", root_path, class: "navbar-brand fs-1" %></p>
+      </div>
+    </div>
+
+    <div class="container bg-white p-3">
+      <div class="row">
+
+        <div class="col-lg-3 border-start order-lg-last">
+          <div class="well sidebar-nav">
+            <h5 class="mb-3 text-center">
+              <% if user_signed_in? %>
+                <%= current_user.name %>
+              <% else %>
+                Присоединяйся!
+              <% end %>
+            </h5>
+            <div class="nav-list">
+              <% if user_signed_in? %>
+                <p><%= link_to "Профиль", user_path(current_user) %></p>
+                <p><%= link_to "Позвать друзей!", new_event_path %></p>
+                <p><%= button_to "Выйти", destroy_user_session_path, method: :delete  %></p>
+              <% else %>
+                <p><%= link_to "Войти", new_user_session_path %></p>
+                <p><%= link_to "Зарегистрироваться", new_user_registration_path %></p>
+              <% end %>
+            </div>
+          </div><!--/.well -->
+        </div>
+
+        <div class="col-lg-9">
+          <%= yield %>
+        </div><!--/span-->
+      </div><!--/row-->
+      <footer>
+        <p>&copy; Company 2022</p>
+      </footer>
+    </div> <!-- /container -->
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<div class="text-center">
+  <h1><%= @user.name %></h1>
+  <div class="d-flex justify-content-center my-4">
+    <div class="user_avatar_box d-flex justify-content-center">
+      <img src="<%= asset_path('logo.png') %>" class="img-fluid img-thumbnail mx-auto d-block">
+    </div>
+  </div>
+
+  <% if @user == current_user %>
+    <p class="buffer-top">
+      <%= link_to "Редактировать профиль", edit_user_path(@user), class: "btn btn-secondary" %>
+    </p>
+  <% end %>
+
+  <div class="col-mb-12">
+    <% if @user.events.any? %>
+      <div class="row buffer-bottom mb-4">
+        <% if @user.events.where(datetime: Time.now..).any? %>
+          <p class="bg-success text-warning p-3">Ждем гостей на:</p>
+          <% @user.events.where(datetime: Time.now..).each do |event| %>
+            <%= render "events/event", event: event %>
+          <% end %>
+
+        <% else %>
+          <p class=" bg-secondary text-warning p-3">Гостей пока не ждем :(</p>
+        <% end %>
+      </div>
+
+      <div class="row buffer-bottom">
+        <% if @user.events.where(datetime: ..Time.now).any? %>
+          <p class=" bg-secondary text-warning p-3">Гости уже ушли с:</p>
+          <% @user.events.where(datetime: ..Time.now).each do |event| %>
+            <%= render "events/event", event: event %>
+          <% end %>
+          
+        <% else %>
+          <p class="bg-secondary text-warning p-3">Пока нет прошедших мероприятий</p>
+        <% end %>
+      </div>
+      <% else %>
+        
+        <% if current_user == @user %>
+          <p class="bg-secondary text-warning p-3">Ты пока не создавал мероприятий :(<br>Ждем, когда ты позовешь друзей!</p>
+          <p><%= link_to "Позвать друзей!", new_event_path %></p>
+        <% else %>
+          <p class="bg-secondary text-warning p-3">Пока не было мероприятий от этого пользователя :(</p>
+        <% end %>
+    <% end %>
+    <h3></h3>
+  </div>
+</div>

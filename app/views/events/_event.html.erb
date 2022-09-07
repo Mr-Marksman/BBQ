@@ -1,0 +1,12 @@
+<div class="col-sm-6 col-md-4">
+  <div class="thumbnail">
+    <div class="thumbnail-inner bg-light rounded p-2 border border-dark">
+      <div class="caption">
+        <h3 class="text-center"><%= link_to event.title, event_path(event), class:"text-decoration-none" %></h3>
+        <p class="event-photo"><img src="<%= asset_path('logo.png') %>" width="267" height="150" class="img-thumbnail"></p>
+        <h3><small><%= l(event.datetime, format: :short) %></small></h3>
+        <div class="buffer-both"><%= event.address %></div>
+      </div>
+    </div>
+  </div>
+</div>
