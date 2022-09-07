@@ -1,4 +1,19 @@
+rails new my_app --javascript=esbuild --css=tailwind
+...
+Add "scripts": { "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds" } to your package.json
+...
+Add "scripts": { "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css" } to your package.json
+
+$ cat ol_npm/package.json
 {
   "name": "app",
-  "private": "true"
+  "private": "true",
+  "dependencies": {
+    "@hotwired/stimulus": "^3.0.1"
+  }
+  
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css"
+  }
 }
