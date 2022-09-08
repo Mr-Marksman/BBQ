@@ -1,9 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="alert alert-success alert-dismissible fade show row col-md-6" role="alert">
+  <p style="color: black;"><%= notice %></p>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+</div>
 
-<h1>Events</h1>
+<h1>Мероприятия</h1>
 
 <div class="row buffer-bottom">
   <%= render partial: 'events/event', collection: @events %>
 </div>
 
-<%= link_to "New event", new_event_path %>
+<%= link_to "Создать новое мероприятие", new_event_path %>
