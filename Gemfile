@@ -17,6 +17,8 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "devise"
+gem "devise-i18n"
+gem "russian"
 
 gem 'bootstrap', '~> 5.1.3'
 
