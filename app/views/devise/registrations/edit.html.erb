@@ -33,10 +33,13 @@
 
   <div class="actions">
     <%= f.submit "Подтвердить изменения", class: "btn btn-success mt-3" %>
-    <%= button_to "Удалить аккаунт", registration_path(resource_name), method: :delete, 
-    form: { data: { turbo_confirm: "Вы уверены?" } }, class:"btn btn-danger" %>
   </div>
 <% end %>
+
+<p>
+  <%= button_to "Удалить аккаунт", registration_path(resource_name), 
+    data: { confirm: "Вы уверены? Мы будем скучать :(" }, method: :delete, class:"btn btn-danger" %>
+</p>
 
 <%= link_to "Back", :back %>
 

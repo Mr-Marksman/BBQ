@@ -32,3 +32,6 @@ ru:
   app:
     name: 'Шашлыки'
     company: 'Хороший программист'
+
+  actions:
+    confirmation: 'Вы уверены?'
