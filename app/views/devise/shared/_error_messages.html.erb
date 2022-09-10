@@ -1,5 +1,6 @@
 <% if resource.errors.any? %>
   <div id="error_explanation">
+    <h5>Не получается сохранить. Мы нашли <%= I18n.t :error, count: resource.errors.count %>:</h5>
     <% resource.errors.each do |error| %>
     <div class="alert alert-danger alert-dismissible fade show row col-md-6" role="alert">
       <p><%= error.full_message %></p>

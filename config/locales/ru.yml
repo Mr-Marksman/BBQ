@@ -35,3 +35,7 @@ ru:
 
   actions:
     confirmation: 'Вы уверены?'
+  error:
+    one: '%{count} ошибку'
+    few: '%{count} ошибки'
+    many: '%{count} ошибок'
