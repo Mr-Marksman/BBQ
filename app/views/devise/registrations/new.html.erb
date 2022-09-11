@@ -4,17 +4,17 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group mt-3 col-md-6">
-    <%= f.label :name, "Имя*" %><br />
+    <%= f.label :name, I18n.t("form.user.new.name") %><br />
     <%= f.text_field :name, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="form-group mt-3 col-md-6">
-    <%= f.label :email, "Email*" %><br />
+    <%= f.label :email, I18n.t("form.user.new.email") %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
 
   <div class="form-group mt-3 col-md-6">
-    <%= f.label :password, "Пароль*" %>
+    <%= f.label :password, I18n.t("form.user.new.password") %>
     <% if @minimum_password_length %>
     <em>Минимум <%= @minimum_password_length %> символов</em>
     <% end %><br />
@@ -22,11 +22,11 @@
   </div>
 
   <div class="form-group mt-3 col-md-6">
-    <%= f.label :password_confirmation, "Подтверждение пароля" %><br />
+    <%= f.label :password_confirmation, I18n.t("form.user.new.password_confirmation") %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Зарегистрироваться", class: "btn btn-success mt-3" %>
+    <%= f.submit I18n.t("form.user.new.submit"), class: "btn btn-success mt-3" %>
   </div>
 <% end %>

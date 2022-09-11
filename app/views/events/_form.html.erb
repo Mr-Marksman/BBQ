@@ -1,27 +1,28 @@
 <%= form_with model: event, html: { multipart: true }, data: {turbo: false} do |form| %>
+  <%= render "devise/shared/error_messages", resource: event %>
 
   <div class="form-group mt-4">
-    <%= form.label :title, "Введи название. Оно будет отображено на главной странице." %>
+    <%= form.label :title, I18n.t("form.event.title") %>
     <%= form.text_field :title, class: "form-control" %>
   </div>
 
   <div class="form-group mt-4">
-    <%= form.label :address, "Где будет проходить мероприятие?" %>
+    <%= form.label :address, I18n.t("form.event.address") %>
     <%= form.text_field :address, class: "form-control" %>
   </div>
 
   <div class="form-group mt-4">
-    <%= form.label :datetime, "Когда к тебе приходить?" %>
+    <%= form.label :datetime, I18n.t("form.event.datetime") %>
     <%= form.datetime_select :datetime, class: "form-control" %>
   </div>
 
   <div class="form-group mt-4">
-    <%= form.label :description, "Напиши что-нибудь о мероприятии." %>
+    <%= form.label :description, I18n.t("form.event.description") %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
   
   <div class="actions mt-4">
-    <%= form.submit "Сохранить", class: "btn btn-primary" %>
-    <%= link_to "Вернуться", :back, class: "btn btn-warning ms-2" %>
+    <%= form.submit I18n.t("form.event.submit"), class: "btn btn-primary" %>
+    <%= link_to I18n.t("links.back"), :back, class: "btn btn-warning ms-2" %>
   </div>
 <% end %>

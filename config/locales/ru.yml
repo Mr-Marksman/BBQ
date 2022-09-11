@@ -1,4 +1,60 @@
 ru:
+  titles:
+    user:
+      edit: 'Редактировать профиль'
+      new: 'Регистрация'
+
+    event:
+      index: 'Все мероприятия'
+      edit: 'Редактировать мероприятие'
+      new: 'Хочешь собрать друзей? Мы поможем!'
+
+  links:
+    user: 'Профиль'
+    edit_user_registration: 'Редактировать профиль'
+    destroy_user_session: 'Выйти'
+    new_user_session: 'Войти'
+    new_user_registration: 'Зарегистрироваться'
+    new_event: 'Позвать друзей!'
+    edit_event: 'Редактировать мероприятие'
+    event: 'На страницу мероприятия'
+    events: 'Все мероприятия'
+    back: 'Вернуться'
+
+
+  form:
+    event:
+      title: 'Введи название. Оно будет отображено на главной странице'
+      address: 'Где будет проходить мероприятие?'
+      datetime: 'Когда к тебе приходить?'
+      description: 'Напиши что-нибудь о мероприятии'
+      submit: 'Сохранить'
+
+    session:
+      email: 'Email*'
+      password: 'Пароль*'
+      remember_me: 'Запомни меня'
+      submit: 'Войти'
+
+    user:
+      new:
+        name: 'Имя*'
+        email: 'Email*'
+        password: 'Пароль*'
+        password_confirmation: 'Подтверждение пароля*'
+        submit: 'Зарегистрироваться'
+
+      edit:
+        name: 'Имя*'
+        password: 'Новый пароль'
+        password_confirmation: 'Повторите новый пароль'
+        current_password: 'Текущий пароль*'
+        submit: 'Подтвердить изменения'
+        destroy: 'Удалить аккаунт'
+
+
+
+
   # Перевод моделей
   activerecord:
     # Перевод названия моделей
@@ -35,6 +91,7 @@ ru:
 
   actions:
     confirmation: 'Вы уверены?'
+
   error:
     one: '%{count} ошибку'
     few: '%{count} ошибки'

@@ -31,12 +31,12 @@
             </h5>
             <div class="nav-list">
               <% if user_signed_in? %>
-                <p><%= link_to "Профиль", user_path(current_user) %></p>
-                <p><%= link_to "Позвать друзей!", new_event_path %></p>
-                <p><%= button_to "Выйти", destroy_user_session_path, method: :delete, class: "btn btn-warning"  %></p>
+                <p><%= link_to I18n.t("links.user"), user_path(current_user) %></p>
+                <p><%= link_to I18n.t("links.new_event"), new_event_path %></p>
+                <p><%= button_to I18n.t("links.destroy_user_session"), destroy_user_session_path, method: :delete, class: "btn btn-warning"  %></p>
               <% else %>
-                <p><%= link_to "Войти", new_user_session_path %></p>
-                <p><%= link_to "Зарегистрироваться", new_user_registration_path %></p>
+                <p><%= link_to I18n.t("links.new_user_session"), new_user_session_path %></p>
+                <p><%= link_to I18n.t("links.new_user_registration"), new_user_registration_path %></p>
               <% end %>
             </div>
           </div><!--/.well -->

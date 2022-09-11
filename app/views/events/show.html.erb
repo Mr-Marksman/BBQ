@@ -13,9 +13,9 @@
 
     <div>
       <% if current_user_can_edit?(@event) %>
-        <%= link_to "Редактировать мероприятие", edit_event_path(@event), class:"btn btn-warning mb-3" %>
+        <%= link_to I18n.t("links.edit_event"), edit_event_path(@event), class:"btn btn-warning mb-3" %>
       <% end %>
-      <%= link_to "Все мероприятия", events_path %>
+      <%= link_to I18n.t("links.events"), events_path %>
     </div>
   </div>
 </div>

@@ -7,6 +7,6 @@
 <div>
   <%= button_to "Удалить событие", event_path(@event), method: :delete, class: "btn btn-danger",
   form: { data: { turbo_confirm: I18n.t("actions.confirmation") }} %>
-  <%= link_to "Вернуться на страницу мероприятия", @event %> |
-  <%= link_to "Все мероприятия", events_path %>
+  <%= link_to I18n.t("links.event"), @event %> |
+  <%= link_to I18n.t("links.events"), events_path %>
 </div>
