@@ -11,7 +11,7 @@ class Subscription < ApplicationRecord
 
   def not_event_creator
     if user == event.user
-      errors.add(:user_id, message: I18n.t('controllers.subscriptions.self_subscription'))
+      errors.add(:user_id, message: I18n.t('validations.subscriptions.self_subscription'))
     end
   end
 

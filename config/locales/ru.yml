@@ -97,7 +97,6 @@ ru:
       created: 'Подписка успешно создана!'
       error: 'С подпиской что-то пошло не так'
       destroyed: 'Подписка удалена'
-      self_subscription: 'Вы не можете подписаться на свое же событие'
 
   # Перевод названия приложения и компании-разработчика
   app:
@@ -106,6 +105,10 @@ ru:
 
   actions:
     confirmation: 'Вы уверены?'
+
+  validations:
+    subscriptions:
+      self_subscription: 'Вы не можете подписаться на свое же событие'
 
   error:
     one: '%{count} ошибку'
