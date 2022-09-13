@@ -6,6 +6,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
 
-  
+  after_commit :link_subscriptions, on: :create
+
   validates :name, presence: true
+
+  def link_subscriptions 
+    Subscription.where(user_id: nil, user_email: self.email).update_all(user_id: self.id)
+  end
 end

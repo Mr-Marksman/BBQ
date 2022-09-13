@@ -5,7 +5,15 @@ class Subscription < ApplicationRecord
   validates :user_name, presence: true
   validates :user_email, presence: true
   validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
-  validates :user_email, uniqueness: {scope: :event_id},  unless: -> { user.present? }
+  validates :user_email, uniqueness: {scope: :event_id},  unless: -> { user.present? } 
+  validate :not_event_creator
+  
+
+  def not_event_creator
+    if user == event.user
+      errors.add(:user_id, message: I18n.t('controllers.subscriptions.self_subscription'))
+    end
+  end
 
   def user_name 
     if user.present?
