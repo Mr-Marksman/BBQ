@@ -29,13 +29,12 @@ ru:
       datetime: 'Когда к тебе приходить?'
       description: 'Напиши что-нибудь о мероприятии'
       submit: 'Сохранить'
-
+      destroy: 'Удалить мероприятие'
     session:
       email: 'Email*'
       password: 'Пароль*'
       remember_me: 'Запомни меня'
       submit: 'Войти'
-
     user:
       new:
         name: 'Имя*'
@@ -43,7 +42,6 @@ ru:
         password: 'Пароль*'
         password_confirmation: 'Подтверждение пароля*'
         submit: 'Зарегистрироваться'
-
       edit:
         name: 'Имя*'
         password: 'Новый пароль'
@@ -51,9 +49,17 @@ ru:
         current_password: 'Текущий пароль*'
         submit: 'Подтвердить изменения'
         destroy: 'Удалить аккаунт'
-
-
-
+        
+    comment:
+      body: 'Текст комментария'
+      name: 'Ваше имя'
+      destroy: 'Удалить комментарий'
+      submit: 'Оставить комментарий'
+    subscription:
+      email: 'Email' 
+      name: 'Ваше имя'
+      destroy: 'Не пойду'
+      submit: 'Пойду!'
 
   # Перевод моделей
   activerecord:
@@ -83,6 +89,14 @@ ru:
       destroyed: 'Вы удалили мероприятие :('
     users:
       updated: 'Вы обновили свой профиль'
+    comments:
+      created: 'Комментарий создан!'
+      error: 'С комментарием что-то пошло не так'
+      destroyed: 'Мы удалили комментарий'
+    subscriptions:
+      created: 'Подписка успешно создана!'
+      error: 'С подпиской что-то пошло не так'
+      destroyed: 'Подписка удалена'
 
   # Перевод названия приложения и компании-разработчика
   app:

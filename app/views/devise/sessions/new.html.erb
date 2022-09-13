@@ -1,6 +1,7 @@
 <h2>Вход в аккаунт</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for resource, as: resource_name, url: session_path(resource_name), data: {turbo: false} do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group mt-3 row col-md-6">
     <%= f.label :email, I18n.t("form.session.email") %><br />

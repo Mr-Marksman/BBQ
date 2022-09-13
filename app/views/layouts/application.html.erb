@@ -43,6 +43,12 @@
         </div>
 
         <div class="col-lg-9">
+          <% if flash[:notice].present? %>
+            <div class="alert alert-success alert-dismissible fade show row col-md-6" role="alert">
+              <p style="color: black;"><%= notice %></p>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+            </div>
+          <% end %>
           <%= yield %>
         </div><!--/span-->
       </div><!--/row-->

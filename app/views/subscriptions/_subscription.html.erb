@@ -1,0 +1,22 @@
+<span class="subscriotion">
+  <% if subscription.user.present? %>
+    <div class="user_avatar_box sm">
+      <a href="<%= user_path(@event.user) %>">
+        <img src="<%= asset_path('logo.png') %>" class="img-fluid img-thumbnail rounded-circle">
+      </a>
+    </div>
+
+    <p>
+      <a href="<%= user_path(subscription.user) %>"><%= subscription.user.name %></a>
+    </p>
+  <% else %>
+    <em><strong><%= subscription.user_name %></strong></em>
+  <% end %>
+
+  <p>
+    <% if current_user_can_edit?(subscription) %>
+      <%= button_to I18n.t("form.subscription.destroy"), event_subscription_path(subscription.event, subscription), method: :delete, class: "btn btn-danger",
+        form: { data: { turbo_confirm: I18n.t("actions.confirmation") }} %>
+    <% end %>
+  </p>
+</span>

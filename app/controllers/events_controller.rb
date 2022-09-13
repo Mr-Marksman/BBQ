@@ -3,50 +3,39 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show]
   before_action :set_current_user_event, only: %i[edit update destroy]
 
-  # GET /events or /events.json
   def index
     @events = Event.all
   end
 
-  # GET /events/1 or /events/1.json
   def show
+    @new_comment = @event.comments.build(params[:comment])
+    @new_subscription = @event.subscriptions.build(params[:subscription])
   end
 
-  # GET /events/new
   def new
     @event = current_user.events.build
   end
 
-  # GET /events/1/edit
   def edit
   end
 
-  # POST /events or /events.json
   def create
     @event = current_user.events.build(event_params)
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to event_url(@event), notice: I18n.t("controllers.events.created") }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.save
+      redirect_to event_url(@event), notice: I18n.t("controllers.events.created")
+    else
+      render json: @event.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to event_url(@event), notice: I18n.t("controllers.events.updated") }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+    if @event.update(event_params)
+      redirect_to event_url(@event), notice: I18n.t("controllers.events.updated")
+    else
+      render :edit, status: :unprocessable_entity
       end
-    end
   end
 
   # DELETE /events/1 or /events/1.json

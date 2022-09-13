@@ -1,0 +1,17 @@
+<%= form_for [@event, subscription], data: {turbo: false} do |form| %>
+  <%= render "devise/shared/error_messages", resource: subscription %>
+
+  <% unless user_signed_in? %>
+    <div class="form-group">
+      <%= form.label :user_email, I18n.t("form.subscription.email") %>
+      <%= form.text_area :user_email, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :user_name, I18n.t("form.subscription.name") %>
+      <%= form.text_field :user_name, class: "form-control" %>
+    </div>
+  <% end %>
+  
+  <%= form.submit I18n.t("form.subscription.submit"), class: "btn btn-warning mt-2" %>
+<% end %>

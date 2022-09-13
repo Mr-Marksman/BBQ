@@ -16,3 +16,18 @@
    height:150px;
    object-fit:cover;
 }
+
+.comment {
+  width: 70px;
+  height: 110px;
+}
+
+.sm, {
+  width: 70px;
+  height: 70px;
+}
+
+.sm img, .comment img {
+  width: 70px;
+  height: 70px;
+}

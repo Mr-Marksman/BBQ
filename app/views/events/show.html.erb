@@ -17,5 +17,47 @@
       <% end %>
       <%= link_to I18n.t("links.events"), events_path %>
     </div>
+
+    <div class="row mt-5">
+      <div class="col-md-8">
+        <h5>Комментарии</h5>
+        <%= render partial: "comments/form", locals: {comment: @new_comment || @event.comments.build} %>
+        <%= render partial: "comments/comment", collection: @event.comments.except(@new_comment) %>
+      </div>
+
+      <div class="col-md-4">
+        <div class="event-owner">
+          <h4>Зовет:</h4>
+          <% if @event.user.present? %>
+            <div class="user_avatar_box sm">
+              <a href="<%= user_path(@event.user) %>">
+                <img src="<%= asset_path('logo.png') %>" class="img-fluid img-thumbnail rounded-circle">
+              </a>
+            </div>
+
+            <p>
+              <a href="<%= user_path(@event.user) %>"><%= @event.user.name %></a>
+            </p>
+          <% end %>
+        </div>
+
+        <div class="event-subscriptions">
+          <h4>Пойдут:<%= @event.subscribers.count if @event.subscribers.count > 10 %></h4>
+          <div>
+            <p>
+              <%= render partial: "subscriptions/subscription", collection: @event.subscriptions.except(@new_subscription).last(10) %>
+            </p>
+          </div>
+        </div>
+
+        <div class="event-subscription-form">
+          <h4>Я пойду:</h4>
+          <%= render partial: "subscriptions/form", locals: {subscription: @new_subscription || @event.subscription.build} %>
+          <div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
