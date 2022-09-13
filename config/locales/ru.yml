@@ -80,6 +80,9 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+      subscription:
+        user_email: 'Этот Email'
+        user: 'Пользователь'
 
   # Перевод сообщений, которые отправляет контроллер
   controllers:
@@ -109,6 +112,7 @@ ru:
   validations:
     subscriptions:
       self_subscription: 'Вы не можете подписаться на свое же событие'
+      email_already_used: 'уже существует'
 
   error:
     one: '%{count} ошибку'
