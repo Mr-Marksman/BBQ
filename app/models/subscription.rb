@@ -3,13 +3,17 @@ class Subscription < ApplicationRecord
   belongs_to :user, optional: true
 
   validates :user_name, presence: true
-  validates :user_email, presence: true, 
-    exclusion: { within: User.pluck(:email), message: I18n.t("validations.subscriptions.email_already_used") }
-
+  validates :user_email, presence: true
   validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
   validates :user_email, uniqueness: {scope: :event_id},  unless: -> { user.present? } 
   validate :not_event_creator
+  validate :user_not_registered
   
+  def user_not_registered
+    if User.find_by(email: user_email).present?
+      errors.add(:user_email, message: I18n.t("validations.subscriptions.email_already_used"))
+    end
+  end
 
   def not_event_creator
     if user == event.user
