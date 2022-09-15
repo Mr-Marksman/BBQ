@@ -1,16 +1,17 @@
-<h2>Forgot your password?</h2>
+<h2><%= I18n.t("links.forgot_password") %></h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for resource, as: resource_name,
+  url: password_path(resource_name), 
+  html: { method: :post }, 
+  data: {turbo: false} do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group mt-3 col-md-6">
+    <%= f.label :email, I18n.t("form.user.new.email") %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit I18n.t("form.user.edit.send_instructions"), class: "btn btn-success mt-3" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

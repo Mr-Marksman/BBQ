@@ -16,34 +16,36 @@
     <% if @user.events.any? %>
       <div class="row buffer-bottom mb-4">
         <% if @user.events.where(datetime: Time.now..).any? %>
-          <p class="bg-success text-warning p-3">Ждем гостей на:</p>
+          <p class="bg-success text-warning p-3"><%= I18n.t("views.user.show.waiting_for") %></p>
           <% @user.events.where(datetime: Time.now..).each do |event| %>
             <%= render "events/event", event: event %>
           <% end %>
 
         <% else %>
-          <p class=" bg-secondary text-warning p-3">Гостей пока не ждем :(</p>
+          <p class=" bg-secondary text-warning p-3"><%= I18n.t("views.user.show.not_waiting") %></p>
         <% end %>
       </div>
 
       <div class="row buffer-bottom">
         <% if @user.events.where(datetime: ..Time.now).any? %>
-          <p class=" bg-secondary text-warning p-3">Гости уже ушли с:</p>
+          <p class=" bg-secondary text-warning p-3"><%= I18n.t("views.user.show.gone") %></p>
           <% @user.events.where(datetime: ..Time.now).each do |event| %>
             <%= render "events/event", event: event %>
           <% end %>
           
         <% else %>
-          <p class="bg-secondary text-warning p-3">Пока нет прошедших мероприятий</p>
+          <p class="bg-secondary text-warning p-3"><%= I18n.t("views.user.show.while_not_events.t1") %></p>
         <% end %>
       </div>
       <% else %>
         
         <% if current_user == @user %>
-          <p class="bg-secondary text-warning p-3">Ты пока не создавал мероприятий :(<br>Ждем, когда ты позовешь друзей!</p>
+          <p class="bg-secondary text-warning p-3">
+            <%= I18n.t("views.user.show.while_not_events.t2") %><br>
+            <%= I18n.t("views.user.show.while_not_events.t3") %></p>
           <p><%= link_to I18n.t("links.new_event"), new_event_path %></p>
         <% else %>
-          <p class="bg-secondary text-warning p-3">Пока не было мероприятий от этого пользователя :(</p>
+          <p class="bg-secondary text-warning p-3"><%= I18n.t("views.user.show.while_not_events.t4") %></p>
         <% end %>
     <% end %>
   </div>

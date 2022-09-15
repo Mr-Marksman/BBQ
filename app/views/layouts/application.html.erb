@@ -26,7 +26,7 @@
               <% if user_signed_in? %>
                 <%= current_user.name %>
               <% else %>
-                Присоединяйся!
+                <%= I18n.t("views.application.join") %>
               <% end %>
             </h5>
             <div class="nav-list">
@@ -37,6 +37,7 @@
               <% else %>
                 <p><%= link_to I18n.t("links.new_user_session"), new_user_session_path %></p>
                 <p><%= link_to I18n.t("links.new_user_registration"), new_user_registration_path %></p>
+                <p><%= link_to I18n.t("links.forgot_password"), new_user_password_path %></p>
               <% end %>
             </div>
           </div><!--/.well -->
@@ -52,9 +53,6 @@
           <%= yield %>
         </div><!--/span-->
       </div><!--/row-->
-      <footer>
-        <p>&copy; Company 2022</p>
-      </footer>
     </div> <!-- /container -->
   </body>
 </html>

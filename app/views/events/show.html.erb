@@ -4,9 +4,12 @@
       <h1 class="text-center mb-4"><%= @event.title %></h1>
       <p class="event-photo"><img src="<%= asset_path('logo.png') %>" width="400" height="225"></p>
       <h3 class="mb-3">
-        <small>Где все проходит: <%= link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}" %></small>
+        <small>
+          <%= I18n.t("views.event.show.where") %>
+          <%= link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}" %>
+        </small>
       </h3>
-      <h3 class="mb-2"><small>Немного о мероприятии:</small></h3>
+      <h3 class="mb-2"><small><%= I18n.t("views.event.show.about") %></small></h3>
       <p class="mb-3"><%= @event.description %></p>
       <h3><small><%= l(@event.datetime, format: :short) %></small></h3>
     </div>
@@ -20,14 +23,14 @@
 
     <div class="row mt-5">
       <div class="col-md-8">
-        <h5>Комментарии</h5>
+        <h5><%= I18n.t("views.event.show.comments") %></h5>
         <%= render partial: "comments/form", locals: {comment: @new_comment || @event.comments.build} %>
         <%= render partial: "comments/comment", collection: @event.comments.except(@new_comment) %>
       </div>
 
       <div class="col-md-4">
         <div class="event-owner">
-          <h4>Зовет:</h4>
+          <h4><%= I18n.t("views.event.show.calling") %></h4>
           <% if @event.user.present? %>
             <div class="user_avatar_box sm">
               <a href="<%= user_path(@event.user) %>">
@@ -42,7 +45,7 @@
         </div>
 
         <div class="event-subscriptions">
-          <h4>Пойдут:<%= @event.subscribers.count if @event.subscribers.count > 10 %></h4>
+          <h4><%= I18n.t("views.event.show.will_go") %><%= @event.subscribers.count if @event.subscribers.count > 10 %></h4>
           <div>
             <p>
               <%= render partial: "subscriptions/subscription", collection: @event.subscriptions.except(@new_subscription).last(10) %>
@@ -52,7 +55,7 @@
 
         <% unless current_user == @event.user %>
           <div class="event-subscription-form">
-            <h4>Я пойду:</h4>
+            <h4><%= I18n.t("views.event.show.i_will_go") %></h4>
             <%= render partial: "subscriptions/form", locals: {subscription: @new_subscription || @event.subscription.build} %>
           </div>
         <% end %>
