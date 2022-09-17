@@ -12,6 +12,7 @@ yandex:
   secret_access_key: 'YCP0NSWm1m3N-JoOyC_xn9GJdyyK_2LLqJyCHcW5'
   bucket: bucketname
   endpoint: 'https://storage.yandexcloud.net'
+  region: 'ru-central3'
   force_path_style: true
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
