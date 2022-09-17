@@ -1,6 +1,10 @@
 module ApplicationHelper
   def user_avatar(user)
-    asset_path('logo.png')
+    if user.avatar.attached?
+      user.avatar.variant(:thumb)
+    else
+      asset_path('logo.png')
+    end
   end
 
   def current_user_can_edit?(model)

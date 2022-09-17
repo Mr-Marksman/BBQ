@@ -2,7 +2,7 @@
   <h1><%= @user.name %></h1>
   <div class="d-flex justify-content-center my-4">
     <div class="user_avatar_box d-flex justify-content-center">
-      <img src="<%= asset_path('logo.png') %>" class="img-fluid img-thumbnail mx-auto d-block">
+      <%= image_tag @user.avatar %>
     </div>
   </div>
 
