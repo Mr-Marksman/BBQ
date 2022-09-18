@@ -1,7 +1,7 @@
 module ApplicationHelper
   def user_avatar(user)
     if user.avatar.attached?
-      user.avatar.variant(:thumb)
+      user.avatar.variant(:thumb).url
     else
       asset_path('logo.png')
     end

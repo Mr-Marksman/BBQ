@@ -8,9 +8,9 @@ test:
 
 yandex:
   service: S3
-  access_key_id: 'YCAJE5QDoezoxhnWnhztfjZkA'
-  secret_access_key: 'YCP0NSWm1m3N-JoOyC_xn9GJdyyK_2LLqJyCHcW5'
-  bucket: bucketname
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  bucket: 'bbq-photo-storage'
   endpoint: 'https://storage.yandexcloud.net'
   region: 'ru-central3'
   force_path_style: true
