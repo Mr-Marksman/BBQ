@@ -2,7 +2,7 @@
   <% if subscription.user.present? %>
     <div class="user_avatar_box sm">
       <a href="<%= user_path(@event.user) %>">
-        <img src="<%= image_tag user_avatar(@user)%>" class="img-fluid img-thumbnail rounded-circle">
+        <img src="<%= image_tag user_avatar(subscription.user)%>" class="img-fluid img-thumbnail rounded-circle">
       </a>
     </div>
 

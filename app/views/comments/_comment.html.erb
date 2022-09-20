@@ -2,7 +2,7 @@
   <% if comment.user.present? %>
     <div class="user_avatar_box comment float-end">
       <a href="<%= user_path(comment.user) %>">
-        <img src="<%= image_tag user_avatar(@user)%>" class="img-fluid img-thumbnail rounded-circle">
+        <img src="<%= image_tag user_avatar(comment.user)%>" class="img-fluid img-thumbnail rounded-circle">
         <p class="text-center"><%= comment.user.name %></p>
       </a>
     </div>
