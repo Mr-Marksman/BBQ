@@ -63,6 +63,7 @@ ru:
     picture:
       photo: 'Добавь новое фото'
       submit: 'Загрузить'
+      destroy: 'Удалить'
         
     comment:
       body: 'Текст комментария'
