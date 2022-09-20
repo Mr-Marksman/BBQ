@@ -21,6 +21,7 @@ gem "devise-i18n"
 gem "rails-i18n"
 gem 'bootstrap', '~> 5.1.3'
 gem "image_processing", "~> 1.2"
+gem "rmagick"
 gem "aws-sdk-s3", require: false
 
 group :development, :test do

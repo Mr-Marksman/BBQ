@@ -60,6 +60,9 @@ ru:
         destroy: 'Удалить аккаунт'
         send_instructions: 'Отправить инструкции на почту'
         avatar: 'Аватар'
+    picture:
+      photo: 'Добавь новое фото'
+      submit: 'Загрузить'
         
     comment:
       body: 'Текст комментария'
@@ -154,6 +157,7 @@ ru:
         calling: 'Зовет:'
         will_go: 'Пойдут:'
         i_will_go: 'Я пойду:'
+        pictures: 'Фоточки'
     error_message: 'Не получается сохранить. Мы нашли '
     registration:
       email_confirm: 'Все еще ждем подтверждения email: '

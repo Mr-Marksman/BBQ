@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="col-md-6">
       <h1 class="text-center mb-4"><%= @event.title %></h1>
-      <p class="event-photo main_picture_box"><%= image_tag main_photo(@event) %></p>
+      <div class="main_picture_box"><%= image_tag main_photo(@event) %></div>
       <h3 class="mb-3">
         <small>
           <%= I18n.t("views.event.show.where") %>
@@ -37,11 +37,11 @@
         <div class="event-owner">
           <h4><%= I18n.t("views.event.show.calling") %></h4>
           <% if @event.user.present? %>
-            <div class="user_avatar_box sm">
               <a href="<%= user_path(@event.user) %>">
-                <img src="<%= asset_path('logo.png') %>" class="img-fluid img-thumbnail rounded-circle">
+                <div class="user_avatar_box sm">
+                  <img src="<%= user_avatar(@event.user) %>" class="img-thumbnail rounded-circle">
+                </div>
               </a>
-            </div>
 
             <p>
               <a href="<%= user_path(@event.user) %>"><%= @event.user.name %></a>
