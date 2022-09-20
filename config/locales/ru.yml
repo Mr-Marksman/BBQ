@@ -59,6 +59,7 @@ ru:
         submit: 'Подтвердить изменения'
         destroy: 'Удалить аккаунт'
         send_instructions: 'Отправить инструкции на почту'
+        avatar: 'Аватар'
         
     comment:
       body: 'Текст комментария'
@@ -90,6 +91,7 @@ ru:
         address: 'Место проведения'
         datetime: 'Дата и время'
         description: 'Описание'
+        photos: 'Фотографий'
       subscription:
         user_email: 'Этот Email'
         user: 'Пользователь'
@@ -123,6 +125,8 @@ ru:
     subscriptions:
       self_subscription: 'Вы не можете подписаться на свое же событие'
       email_already_used: 'уже существует'
+    events:
+      many_photos: 'слишком много - не можем загрузить больше ('
 
   error:
     one: '%{count} ошибку'

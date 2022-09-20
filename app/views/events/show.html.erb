@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="col-md-6">
       <h1 class="text-center mb-4"><%= @event.title %></h1>
-      <p class="event-photo"><img src="<%= asset_path('logo.png') %>" width="400" height="225"></p>
+      <p class="event-photo main_picture_box"><%= image_tag main_photo(@event) %></p>
       <h3 class="mb-3">
         <small>
           <%= I18n.t("views.event.show.where") %>
@@ -23,6 +23,11 @@
 
     <div class="row mt-5">
       <div class="col-md-8">
+
+        <h5><%= I18n.t("views.event.show.pictures") %></h5>
+        <%= render partial: "pictures/form", locals: {picture: @new_picture || @event.pictures.build} %>
+        <%= render partial: "pictures/picture", collection: @event.pictures.except(@new_picture) %>
+
         <h5><%= I18n.t("views.event.show.comments") %></h5>
         <%= render partial: "comments/form", locals: {comment: @new_comment || @event.comments.build} %>
         <%= render partial: "comments/comment", collection: @event.comments.except(@new_comment) %>

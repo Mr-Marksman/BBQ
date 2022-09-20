@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :events do
+    resources :pictures, only: %i[create destroy]
     resources :comments, only: %i[create destroy]
     resources :subscriptions, only: %i[create destroy]
   end
