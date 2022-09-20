@@ -1,9 +1,8 @@
 <div class="border border-dark rounded p-3">
   <% if comment.user.present? %>
-    <div class="user_avatar_box comment float-end">
+    <div class="user_avatar_box sm floar-end">
       <a href="<%= user_path(comment.user) %>">
-        <img src="<%= image_tag user_avatar(comment.user)%>" class="img-fluid img-thumbnail rounded-circle">
-        <p class="text-center"><%= comment.user.name %></p>
+        <img src="<%= user_avatar(comment.user) %>" class="img-fluid img-thumbnail rounded-circle">
       </a>
     </div>
   <% else %>
