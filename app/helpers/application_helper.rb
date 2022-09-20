@@ -8,7 +8,11 @@ module ApplicationHelper
   end
 
   def main_photo(event)
-      event.pictures.first.photo.url || asset_path('logo.png')
+    if event.pictures.exists? && event.pictures.first.photo.attached?
+      event.pictures.first.photo.url
+    else
+      asset_path('logo.png')
+    end
   end
 
   def current_user_can_edit?(model)
