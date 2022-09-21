@@ -15,7 +15,7 @@
     </div>
 
     <%= javascript_include_tag 'map' %>
-    <div id="map" data-address="<%= @event.address %>" class="w-100 col-md-6" style="height: 400px"></div>
+    <div id="map" data-address="<%= @event.address %>" class="col-md-6" style="height: 400px"></div>
 
     <div>
       <% if current_user_can_edit?(@event) %>
