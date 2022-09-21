@@ -15,11 +15,14 @@ class Event < ApplicationRecord
 
   validate :not_many_photos
 
-  private
 
   def not_many_photos
     if pictures.count > 5
       errors.add(:photos, message: I18n.t("validations.events.many_photos"))
     end
+  end
+
+  def pincode_valid?(pin)
+    pincode == pin
   end
 end

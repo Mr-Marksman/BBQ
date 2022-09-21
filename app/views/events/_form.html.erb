@@ -20,6 +20,11 @@
     <%= form.label :description, I18n.t("form.event.description") %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
+
+  <div class="form-group mt-4">
+    <%= form.label :pincode %>
+    <%= form.text_field :pincode, class: "form-control" %>
+  </div>
   
   <div class="actions mt-4">
     <%= form.submit I18n.t("form.event.submit"), class: "btn btn-primary" %>

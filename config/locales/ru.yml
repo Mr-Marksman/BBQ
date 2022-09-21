@@ -96,6 +96,7 @@ ru:
         datetime: 'Дата и время'
         description: 'Описание'
         photos: 'Фотографий'
+        pincode: 'Пинкод'
       subscription:
         user_email: 'Этот Email'
         user: 'Пользователь'
@@ -106,6 +107,7 @@ ru:
       created: 'Вы создали новое мероприятие'
       updated: 'Вы обновили мероприятие'
       destroyed: 'Вы удалили мероприятие :('
+      wrong_pincode: 'Неверный пинкод'
     users:
       updated: 'Вы обновили свой профиль'
     comments:

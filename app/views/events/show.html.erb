@@ -14,6 +14,9 @@
       <h3><small><%= l(@event.datetime, format: :short) %></small></h3>
     </div>
 
+    <%= javascript_include_tag 'map' %>
+    <div id="map" data-address="<%= @event.address %>" class="mb-2 w-100" style="height: 400px"></div>
+
     <div>
       <% if current_user_can_edit?(@event) %>
         <%= link_to I18n.t("links.edit_event"), edit_event_path(@event), class:"btn btn-warning mb-3" %>
