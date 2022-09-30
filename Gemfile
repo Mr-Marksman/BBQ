@@ -1,8 +1,6 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.0"
-
 gem "rails", "~> 7.0.3"
 gem "sprockets-rails"
 gem "puma", "~> 5.0"
@@ -21,7 +19,6 @@ gem "devise-i18n"
 gem "rails-i18n"
 gem 'bootstrap', '~> 5.1.3'
 gem "image_processing", "~> 1.2"
-gem "rmagick"
 gem "aws-sdk-s3", require: false
 gem 'jquery-rails'
 
