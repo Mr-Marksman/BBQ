@@ -269,16 +269,13 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3)
   rails-i18n
-  rmagick
+  rmagick (= 4.2.6)
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
-
-RUBY VERSION
-   ruby 2.7.0p0
 
 BUNDLED WITH
    2.3.18

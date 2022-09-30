@@ -14,8 +14,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_003611) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_003611) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -60,16 +60,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_003611) do
     t.integer "user_id", null: false
     t.string "pincode"
     t.index ["user_id"], name: "index_events_on_user_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "photo"
-    t.integer "event_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_photos_on_event_id"
-    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -101,7 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_003611) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -111,8 +100,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_21_003611) do
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "events", "users"
-  add_foreign_key "photos", "events"
-  add_foreign_key "photos", "users"
   add_foreign_key "pictures", "events"
   add_foreign_key "pictures", "users"
   add_foreign_key "subscriptions", "events"
