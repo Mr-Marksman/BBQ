@@ -31,8 +31,9 @@ require "capistrano/rbenv"
 require "capistrano/bundler"
 require "capistrano/rails"
 require "capistrano/passenger"
-set :rbenv_type, :user_name
+set :rbenv_type, :user
 set :rbenv_ruby, '2.7.5'
+set :bundle_env, :production
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
