@@ -6,7 +6,6 @@
       <%= form.label :photo, I18n.t("form.picture.photo") %>
       <%= form.file_field :photo, class: "form-control" %>
     </div>
+    <%= form.submit I18n.t("form.picture.submit"), class: "btn btn-warning mt-2 mb-3" %>
   <% end %>
-
-  <%= form.submit I18n.t("form.picture.submit"), class: "btn btn-warning mt-2 mb-3" %>
 <% end %>

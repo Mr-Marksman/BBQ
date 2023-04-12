@@ -24,8 +24,7 @@ gem "aws-sdk-s3", require: false
 gem 'jquery-rails'
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'byebug'
   gem "sqlite3", "~> 1.4"
 end
 

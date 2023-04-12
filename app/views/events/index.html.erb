@@ -1,7 +1,5 @@
-<h1><%= I18n.t("titles.event.index") %></h1>
+<h1 class="text-center my-3"><%= I18n.t("titles.event.index") %></h1>
 
 <div class="row buffer-bottom">
   <%= render partial: 'events/event', collection: @events %>
 </div>
-
-<%= link_to I18n.t("links.new_event"), new_event_path %>

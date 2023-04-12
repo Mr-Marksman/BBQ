@@ -14,8 +14,8 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    if current_user_can_edit?(@pucture)
-      @pucture.destroy
+    if current_user_can_edit?(@picture)
+      @picture.destroy
       message = { notice: I18n.t("controllers.puctures.destroyed") }
     else
       message = { alert: I18n.t("controllers.puctures.error") }
@@ -31,7 +31,7 @@ class PicturesController < ApplicationController
   end
 
   def set_picture
-    @picture = picture.find(params[:id])
+    @picture = Picture.find(params[:id])
   end
 
   def set_event

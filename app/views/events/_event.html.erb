@@ -1,16 +1,12 @@
-<div class="col-sm-6 col-md-4">
-  <div class="thumbnail">
-    <div class="thumbnail-inner bg-light rounded p-2 border border-dark">
-      <div class="caption">
-        <h3 class="text-center"><%= link_to event.title, event_path(event), class:"text-decoration-none" %></h3>
-        
-        <div class="picture_box border">
-          <%= image_tag main_photo(event) %>
-        </div>
-
-        <h3><small><%= l(event.datetime, format: :short) %></small></h3>
-        <div class="buffer-both"><%= event.address %></div>
-      </div>
+<div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+  <div class="card shadow-sm">
+    <a class="text-decoration-none text-dark" href=<%= event_path(event) %> >
+    <%= image_tag main_photo(event), class: "card-img-top img-fluid mx-auto d-block" %>
+    <div class="card-body">
+      <h5 class="card-title text-center"><%= event.title %></h5>
+      <h6 class="card-text"><small><%= l(event.datetime, format: :short) %></small></h6>
+      <p class="card-text mb-2"><%= event.address %></p>
     </div>
+    </a>
   </div>
 </div>

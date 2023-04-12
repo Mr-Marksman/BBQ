@@ -1,18 +1,16 @@
 <div class="row mt-2">
-  <div class="picture_box border col-sm-8">
-    <%= image_tag picture.photo.url %>
-  </div>
-
-  <div class="col-sm-4">
+  <div class="col-sm-2">
     <div class="user_avatar_box sm">
       <a href="<%= user_path(picture.user) %>">
         <img src="<%= user_avatar(picture.user) %>" class="img-fluid img-thumbnail rounded-circle">
       </a>
     </div>
+  </div>
 
-    <p>
-      <a href="<%= user_path(picture.user) %>"><%= picture.user.name %></a>
-    </p>
+  <div class="picture_box col-sm-10">
+    <a href="<%= picture.photo.url %>">
+      <%= image_tag picture.photo.url %>
+    </a>
   </div>
 
   <% if current_user_can_edit?(picture) %>

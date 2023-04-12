@@ -2,11 +2,16 @@
    position: relative;
    left: auto;
    overflow:hidden;
-   width:250px;
-   height:250px;
+   height: 200px;
+   position: relative;
 }
 
-.picture_box img, .main_picture_box img {
+.card-img-top {
+   height: 200px;
+   object-fit: cover;
+}
+
+.main_picture_box img {
    position: absolute;
    top:50%;
    left:50%;
@@ -16,7 +21,27 @@
    object-fit:cover;
 }
 
+.picture_box {
+   height: 300px;
+   position: relative;
+}
+
+.picture_box img {
+   max-height: 100%;
+   max-width: 100%;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+}
+
+.logo {
+   mix-blend-mode: multiply;
+}
+
 .main_picture_box, .main_picture_box img {
-  width: 340px;
+  width: 90%;
   height: 340px;
 }

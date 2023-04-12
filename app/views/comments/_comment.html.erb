@@ -1,20 +1,20 @@
-<div class="border border-dark rounded p-3">
+<div class="media border-top p-3">
   <% if comment.user.present? %>
-    <div class="user_avatar_box sm floar-end">
+    <div class="user_avatar_box sm d-inline-block">
       <a href="<%= user_path(comment.user) %>">
-        <img src="<%= user_avatar(comment.user) %>" class="img-fluid img-thumbnail rounded-circle">
+        <img src="<%= user_avatar(comment.user) %>" class="align-self-start img-fluid img-thumbnail rounded-circle">
       </a>
     </div>
   <% else %>
     <em><strong><% comment.user_name %></strong></em>
   <% end %>
 
-  <p><%= comment.body %></p>
-
+  <div class="media-body col-md-10 d-inline-block mx-2">
+    <p><%= comment.body %></p>
     <p><small><%= l(comment.created_at, format: :short) %></small></p>
-    <% if current_user_can_edit?(comment) %>
-      <%= button_to I18n.t("form.comment.destroy"), event_comment_path(comment.event, comment), method: :delete, class: "btn btn-danger",
-        form: { data: { turbo_confirm: I18n.t("actions.confirmation") }} %>
-    <% end %>
-  </p>
+  </div>
+  <% if current_user_can_edit?(comment) %>
+    <%= button_to I18n.t("form.comment.destroy"), event_comment_path(comment.event, comment), method: :delete, class: "btn btn-danger",
+                  form: { data: { turbo_confirm: I18n.t("actions.confirmation") }} %>
+  <% end %>
 </div>

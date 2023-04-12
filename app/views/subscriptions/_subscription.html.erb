@@ -1,14 +1,10 @@
-<span class="subscriotion">
+<span class="subscriotion d-inline-block">
   <% if subscription.user.present? %>
     <div class="user_avatar_box sm">
       <a href="<%= user_path(subscription.user) %>">
         <img src="<%= user_avatar(subscription.user) %>" class="img-fluid img-thumbnail rounded-circle">
       </a>
     </div>
-
-    <p>
-      <a href="<%= user_path(subscription.user) %>"><%= subscription.user.name %></a>
-    </p>
   <% else %>
     <em><strong><%= subscription.user_name %></strong></em>
   <% end %>

@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :subscriptions, only: %i[create destroy]
     post :show, on: :member
   end
+
+  get 'about', to: 'static_pages#about'
   resources :users, only: %i[show]
 end

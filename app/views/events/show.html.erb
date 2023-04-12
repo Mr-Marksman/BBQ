@@ -1,13 +1,13 @@
 <div class="event">
   <div class="col-md-12">
     <div class="row">
+      <h1 class="text-center mb-2"><%= @event.title %></h1>
       <div class="col-md-6">
-        <h1 class="text-center mb-4"><%= @event.title %></h1>
-        <div class="main_picture_box"><%= image_tag main_photo(@event) %></div>
+        <div class="main_picture_box mx-4"><%= image_tag main_photo(@event), class: "border" %></div>
         <h3 class="mb-3">
           <small>
             <%= I18n.t("views.event.show.where") %>
-            <%= link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}" %>
+            <%= link_to @event.address, "https://yandex.ru/maps/?text=#{@event.address}", class: 'text-decoration-none' %>
           </small>
         </h3>
         <h3 class="mb-2"><small><%= I18n.t("views.event.show.about") %></small></h3>
@@ -16,49 +16,47 @@
       </div>
 
       <%= javascript_include_tag 'map' %>
-      <div id="map" data-address="<%= @event.address %>" class="col-md-6 mt-5" style="height: 420px"></div>
+      <div id="map" data-address="<%= @event.address %>" class="col-md-6" style="height: 420px"></div>
     </div>
     <div>
       <% if current_user_can_edit?(@event) %>
         <%= link_to I18n.t("links.edit_event"), edit_event_path(@event), class:"btn btn-warning mb-3" %>
       <% end %>
-      <%= link_to I18n.t("links.events"), events_path %>
     </div>
 
     <div class="row mt-5">
       <div class="col-md-8">
 
-        <h5><%= I18n.t("views.event.show.pictures") %></h5>
+        <h5 class="text-center col-sm-8"><%= I18n.t("views.event.show.pictures") %></h5>
+        <% %>
+        <% if @event.pictures.empty? %>
+          <p>Пока нет фотографий :(</p>
+        <% end %>
         <%= render partial: "pictures/form", locals: {picture: @new_picture || @event.pictures.build} %>
         <%= render partial: "pictures/picture", collection: @event.pictures.except(@new_picture) %>
 
-        <h5><%= I18n.t("views.event.show.comments") %></h5>
+        <h5 class="text-center"><%= I18n.t("views.event.show.comments") %></h5>
         <%= render partial: "comments/form", locals: {comment: @new_comment || @event.comments.build} %>
         <%= render partial: "comments/comment", collection: @event.comments.except(@new_comment) %>
       </div>
 
       <div class="col-md-4">
-        <div class="event-owner">
-          <h4><%= I18n.t("views.event.show.calling") %></h4>
+        <div class="event-owner d-flex flex-column align-items-center mb-3">
+          <h4 class="text-center"><%= I18n.t("views.event.show.calling") %></h4>
           <% if @event.user.present? %>
-              <a href="<%= user_path(@event.user) %>">
-                <div class="user_avatar_box sm">
-                  <img src="<%= user_avatar(@event.user) %>" class="img-thumbnail rounded-circle">
-                </div>
-              </a>
-
-            <p>
-              <a href="<%= user_path(@event.user) %>"><%= @event.user.name %></a>
-            </p>
+            <a href="<%= user_path(@event.user) %>">
+              <div class="user_avatar_box sm">
+                <img src="<%= user_avatar(@event.user) %>" class="img-thumbnail rounded-circle">
+              </div>
+            </a>
           <% end %>
         </div>
 
+
         <div class="event-subscriptions">
-          <h4><%= I18n.t("views.event.show.will_go") %><%= @event.subscribers.count if @event.subscribers.count > 10 %></h4>
+          <h4 class="text-center"><%= I18n.t("views.event.show.will_go") %> <%= @event.subscriptions.count %></h4>
           <div>
-            <p>
-              <%= render partial: "subscriptions/subscription", collection: @event.subscriptions.except(@new_subscription).last(10) %>
-            </p>
+              <%= render partial: "subscriptions/subscription", collection: @event.subscriptions.except(@new_subscription).last(30) %>
           </div>
         </div>
 
