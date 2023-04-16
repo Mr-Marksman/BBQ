@@ -29,6 +29,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'ed25519', '~> 1.2'
+  gem 'bcrypt_pbkdf', '~> 1.0'
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-passenger'

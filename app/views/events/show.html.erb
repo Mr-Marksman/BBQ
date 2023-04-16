@@ -20,7 +20,7 @@
     </div>
     <div>
       <% if current_user_can_edit?(@event) %>
-        <%= link_to I18n.t("links.edit_event"), edit_event_path(@event), class:"btn btn-warning mb-3" %>
+        <%= link_to I18n.t("links.edit_event"), edit_event_path(@event), class: "btn btn-warning mb-3" %>
       <% end %>
     </div>
 
@@ -32,11 +32,11 @@
         <% if @event.pictures.empty? %>
           <p>Пока нет фотографий :(</p>
         <% end %>
-        <%= render partial: "pictures/form", locals: {picture: @new_picture || @event.pictures.build} %>
+        <%= render partial: "pictures/form", locals: { picture: @new_picture || @event.pictures.build } %>
         <%= render partial: "pictures/picture", collection: @event.pictures.except(@new_picture) %>
 
         <h5 class="text-center"><%= I18n.t("views.event.show.comments") %></h5>
-        <%= render partial: "comments/form", locals: {comment: @new_comment || @event.comments.build} %>
+        <%= render partial: "comments/form", locals: { comment: @new_comment || @event.comments.build } %>
         <%= render partial: "comments/comment", collection: @event.comments.except(@new_comment) %>
       </div>
 
@@ -52,19 +52,20 @@
           <% end %>
         </div>
 
-
-        <div class="event-subscriptions">
-          <h4 class="text-center"><%= I18n.t("views.event.show.will_go") %> <%= @event.subscriptions.count %></h4>
-          <div>
+        <% unless @event.subscribers.include?(current_user) %>
+          <div class="event-subscriptions">
+            <h4 class="text-center"><%= I18n.t("views.event.show.will_go") %> <%= @event.subscriptions.count %></h4>
+            <div>
               <%= render partial: "subscriptions/subscription", collection: @event.subscriptions.except(@new_subscription).last(30) %>
+            </div>
           </div>
-        </div>
 
-        <% unless current_user == @event.user %>
-          <div class="event-subscription-form">
-            <h4><%= I18n.t("views.event.show.i_will_go") %></h4>
-            <%= render partial: "subscriptions/form", locals: {subscription: @new_subscription || @event.subscription.build} %>
-          </div>
+          <% unless current_user == @event.user %>
+            <div class="event-subscription-form">
+              <h4><%= I18n.t("views.event.show.i_will_go") %></h4>
+              <%= render partial: "subscriptions/form", locals: { subscription: @new_subscription || @event.subscription.build } %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

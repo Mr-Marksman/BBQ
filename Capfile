@@ -32,7 +32,7 @@ require "capistrano/bundler"
 require "capistrano/rails"
 require "capistrano/passenger"
 set :rbenv_type, :user
-set :rbenv_ruby, '2.7.5'
+set :rbenv_ruby, '3.1.4'
 set :bundle_binstubs, -> { shared_path.join('bin') }
 set :bundle_jobs, 1
 
