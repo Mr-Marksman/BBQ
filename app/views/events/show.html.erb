@@ -52,7 +52,6 @@
           <% end %>
         </div>
 
-        <% unless @event.subscribers.include?(current_user) %>
           <div class="event-subscriptions">
             <h4 class="text-center"><%= I18n.t("views.event.show.will_go") %> <%= @event.subscriptions.count %></h4>
             <div>
@@ -60,13 +59,13 @@
             </div>
           </div>
 
-          <% unless current_user == @event.user %>
+
+          <% unless current_user == @event.user || @event.subscribers.include?(current_user) %>
             <div class="event-subscription-form">
               <h4><%= I18n.t("views.event.show.i_will_go") %></h4>
               <%= render partial: "subscriptions/form", locals: { subscription: @new_subscription || @event.subscription.build } %>
             </div>
           <% end %>
-        <% end %>
       </div>
     </div>
   </div>
