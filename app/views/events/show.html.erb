@@ -28,9 +28,9 @@
       <div class="col-md-8">
 
         <h5 class="text-center col-sm-8"><%= I18n.t("views.event.show.pictures") %></h5>
-        <% %>
-        <% if @event.pictures.empty? %>
-          <p>Пока нет фотографий :(</p>
+        <% if @event.pictures.where.not(id: nil).empty? %>
+          <p>Пока нет фотографий :( </p>
+          <p>Если загрузить фотографию - она будет отображаться на главной странице</p>
         <% end %>
         <%= render partial: "pictures/form", locals: { picture: @new_picture || @event.pictures.build } %>
         <%= render partial: "pictures/picture", collection: @event.pictures.except(@new_picture) %>

@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  rescue_from ActionController::ParameterMissing, with: :missing_parameter
   before_action :set_picture, only: %i[destroy]
   before_action :set_event, only: %i[create destroy]
 
@@ -16,9 +17,9 @@ class PicturesController < ApplicationController
   def destroy
     if current_user_can_edit?(@picture)
       @picture.destroy
-      message = { notice: I18n.t("controllers.puctures.destroyed") }
+      message = { notice: I18n.t("controllers.pictures.destroyed") }
     else
-      message = { alert: I18n.t("controllers.puctures.error") }
+      message = { alert: I18n.t("controllers.pictures.error") }
     end
 
     redirect_to @event, message
@@ -36,5 +37,10 @@ class PicturesController < ApplicationController
 
   def set_event
     @event = Event.find(params[:event_id])
+  end
+
+  def missing_parameter
+    message = { alert: I18n.t("controllers.pictures.missing") }
+    redirect_to @event, message
   end
 end

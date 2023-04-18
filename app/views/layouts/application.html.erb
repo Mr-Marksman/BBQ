@@ -54,6 +54,17 @@
             }, 5000);
         </script>
       <% end %>
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-between align-items-center" role="alert" id="flash-notice">
+          <p class="mb-0 text-start"><%= alert %></p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+        </div>
+        <script>
+            setTimeout(function() {
+                $('#flash-notice button').click();
+            }, 5000);
+        </script>
+      <% end %>
       <%= yield %>
     </div><!--/span-->
   </div><!--/row-->
