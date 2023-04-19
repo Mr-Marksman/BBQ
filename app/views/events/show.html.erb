@@ -27,13 +27,26 @@
     <div class="row mt-5">
       <div class="col-md-8">
 
-        <h5 class="text-center col-sm-8"><%= I18n.t("views.event.show.pictures") %></h5>
+        <h5 class="text-center"><%= I18n.t("views.event.show.pictures") %></h5>
         <% if @event.pictures.where.not(id: nil).empty? %>
           <p>Пока нет фотографий :( </p>
           <p>Если загрузить фотографию - она будет отображаться на главной странице</p>
         <% end %>
         <%= render partial: "pictures/form", locals: { picture: @new_picture || @event.pictures.build } %>
-        <%= render partial: "pictures/picture", collection: @event.pictures.except(@new_picture) %>
+
+        <% unless @event.pictures.except(@new_picture).blank? %>
+          <a data-bs-toggle="modal" href="#ModalToggle1">
+            <div class="picture_box">
+              <%= image_tag main_photo(@event) %>
+            </div>
+          </a>
+        <% end %>
+
+        <div class="pictures-scroll-container">
+          <% @event.pictures.except(@new_picture).each_with_index do |picture, index| %>
+            <%= render partial: "pictures/picture", locals: { picture: picture, counter: index + 1, pictures_count: @event.pictures.except(@new_picture).count } %>
+          <% end %>
+        </div>
 
         <h5 class="text-center"><%= I18n.t("views.event.show.comments") %></h5>
         <%= render partial: "comments/form", locals: { comment: @new_comment || @event.comments.build } %>
@@ -52,20 +65,20 @@
           <% end %>
         </div>
 
-          <div class="event-subscriptions">
-            <h4 class="text-center"><%= I18n.t("views.event.show.will_go") %> <%= @event.subscriptions.count %></h4>
-            <div>
-              <%= render partial: "subscriptions/subscription", collection: @event.subscriptions.except(@new_subscription).last(30) %>
-            </div>
+        <div class="event-subscriptions">
+          <h4 class="text-center"><%= I18n.t("views.event.show.will_go") %> <%= @event.subscriptions.count %></h4>
+          <div>
+            <%= render partial: "subscriptions/subscription", collection: @event.subscriptions.except(@new_subscription).last(30) %>
           </div>
+        </div>
 
 
-          <% unless current_user == @event.user || @event.subscribers.include?(current_user) %>
-            <div class="event-subscription-form">
-              <h4><%= I18n.t("views.event.show.i_will_go") %></h4>
-              <%= render partial: "subscriptions/form", locals: { subscription: @new_subscription || @event.subscription.build } %>
-            </div>
-          <% end %>
+        <% unless current_user == @event.user || @event.subscribers.include?(current_user) %>
+          <div class="event-subscription-form">
+            <h4><%= I18n.t("views.event.show.i_will_go") %></h4>
+            <%= render partial: "subscriptions/form", locals: { subscription: @new_subscription || @event.subscription.build } %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

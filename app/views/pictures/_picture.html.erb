@@ -1,20 +1,33 @@
-<div class="row mt-2">
-  <div class="col-sm-2">
-    <div class="user_avatar_box sm">
-      <a href="<%= user_path(picture.user) %>">
-        <img src="<%= user_avatar(picture.user) %>" class="img-fluid img-thumbnail rounded-circle">
-      </a>
+<div class="modal fade" id="ModalToggle<%= counter %>" aria-hidden="true" aria-labelledby="ModalToggleLabel" tabindex="-1" id="picture-modal">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="user_avatar_box sm">
+          <a href="<%= user_path(picture.user) %>">
+            <img src="<%= user_avatar(picture.user) %>" class="img-fluid img-thumbnail rounded-circle">
+          </a>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <a href="<%= picture.photo.url %>">
+          <%= image_tag picture.photo.url %>
+        </a>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button class="btn btn-primary" data-bs-target="#ModalToggle<%= prev_photo_index(counter, pictures_count) %>" data-bs-toggle="modal" data-bs-dismiss="modal">Prev
+          photo
+        </button>
+        <button class="btn btn-primary" data-bs-target="#ModalToggle<%= next_photo_index(counter, pictures_count) %>" data-bs-toggle="modal" data-bs-dismiss="modal">Next
+          photo
+        </button>
+      </div>
     </div>
   </div>
-
-  <div class="picture_box col-sm-10">
-    <a href="<%= picture.photo.url %>">
-      <%= image_tag picture.photo.url %>
-    </a>
-  </div>
-
-  <% if current_user_can_edit?(picture) %>
-    <%= button_to I18n.t("form.picture.destroy"), event_picture_path(picture.event, picture), method: :delete, class: "btn btn-danger mt-2",
-      form: { data: { turbo_confirm: I18n.t("actions.confirmation") }} %>
-  <% end %>
 </div>
+
+<% if counter > 1 %>
+  <a data-bs-toggle="modal" href="#ModalToggle<%= counter %>">
+    <div class="horizontal-scroll-picture"><%= image_tag picture.photo.url, class: "h-100" %></div>
+  </a>
+<% end %>

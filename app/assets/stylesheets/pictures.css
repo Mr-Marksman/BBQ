@@ -11,6 +11,24 @@
    object-fit: cover;
 }
 
+.modal-body a {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+
+.modal-body a img {
+   max-height: 100%;
+   max-width: 100%;
+   object-fit: contain;
+}
+
+.modal-content {
+   max-height: 75vh;
+   overflow: auto;
+}
+
 .main_picture_box img {
    position: absolute;
    top:50%;
@@ -24,6 +42,19 @@
 .picture_box {
    height: 300px;
    position: relative;
+}
+
+.pictures-scroll-container {
+   height: 100px;
+   display: flex;
+   overflow-x: auto;
+   white-space: nowrap;
+}
+
+.horizontal-scroll-picture {
+   height: 90px;
+   width: auto;
+   padding: 3px;
 }
 
 .picture_box img {
